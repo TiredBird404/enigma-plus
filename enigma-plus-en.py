@@ -44,7 +44,7 @@ text_user = ctk.CTkTextbox(root, font=MONOSPACE_FONT, width=470, height=470)
 # Character library
 ALPHABET : list[str] = list("abcdefghijklmnopqrstuvwxyz") # Can be modified, but the length must be even.
 
-#----------运算----------
+#----------Computing----------
 def turn_deflect(deflect : list[int], turn_extent) -> list[int]:
     # The actual array will not be moduloed, to allow user parameters to reach infinity. 
     # Since wheel generation relies on the initial offset values, the original values of the initial offset cannot be reduced.
