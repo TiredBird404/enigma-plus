@@ -114,7 +114,7 @@ def transduction(deflect : list[int], turn_extent : int, user_character_trans : 
             index_deflect = (index_alphabet + deflect[n]) % len(ALPHABET)
             letter_index = rotor.index(ALPHABET[index_deflect])
             letter = ALPHABET[letter_index]
-        # 生成交替
+        # 机械交替
         machine_trans : list[str] = [machine_trans_parameter[l:l+2] for l in range(0, len(machine_trans_parameter), 2)]
         letter = character_correspond(machine_trans, letter)
         # 逆向
