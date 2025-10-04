@@ -72,7 +72,7 @@ def unrest_alphabet(init_value : str) -> list[str]:
     alphabet_list : list[str] = ALPHABET.copy()
     random_numbers : list[int] = []
     for n in range(len(alphabet_list)):
-        parameter : str = init_value + str(len(init_value) - n)
+        parameter : str = init_value + str(len(init_value) * (len(init_value) - n))
         hash_object = hashlib.sha3_512(parameter.encode("utf-8"))
         hash_bytes = hash_object.digest()
         hash_int : int = int.from_bytes(hash_bytes, byteorder='big')
