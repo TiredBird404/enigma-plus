@@ -68,7 +68,7 @@ def character_conversion(trans : list[str], letter : str) -> str:
             letter = trans_character[(letter_index + 1) % 2] #0->1, 1->0
     return letter
 
-def generale_rotor(init_value : str) -> list[str]:
+def unrest_alphabet(init_value : str) -> list[str]:
     alphabet_list : list[str] = ALPHABET.copy()
     random_numbers : list[int] = []
     for n in range(len(alphabet_list)):
@@ -85,15 +85,15 @@ def generale_rotor(init_value : str) -> list[str]:
 
     return alphabet_list
 
-def generate_rotors_main(deflect : list[int] , turn_extent : int, user_character_trans : str,):
+def generate_rotors(deflect : list[int] , turn_extent : int, user_character_trans : str,):
     rotors : list[list[str]] = []
     for i, deflect_value in enumerate(deflect):
         user_value_count : int = sum(deflect) + len(deflect) + deflect_value + turn_extent + i
         init_value : str = user_character_trans + str(user_value_count)
-        alphabet_unrest = generale_rotor(init_value)
+        alphabet_unrest = unrest_alphabet(init_value)
         rotors.append(alphabet_unrest)
     trans_init_value = ''.join(''.join(row) for row in rotors)
-    machine_trans_parameter : list[str] = generale_rotor(trans_init_value)
+    machine_trans_parameter : list[str] = unrest_alphabet(trans_init_value)
     return rotors, machine_trans_parameter
 
 def transduction(deflect : list[int], turn_extent : int, user_character_trans : list[str], text : str) -> str:
@@ -108,7 +108,7 @@ def transduction(deflect : list[int], turn_extent : int, user_character_trans : 
             continue
         # User transduction
         letter = character_conversion(user_character_trans, letter)
-        rotors, machine_trans_parameter = generate_rotors_main(deflect, turn_extent, user_trans_integration)
+        rotors, machine_trans_parameter = generate_rotors(deflect, turn_extent, user_trans_integration)
         # Positive progression
         for n, rotor in enumerate(rotors):
             index_alphabet = ALPHABET.index(letter)
