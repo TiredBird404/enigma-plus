@@ -1,4 +1,4 @@
-[中文简介](https://github.com/TiredBird404/enigma-plus/blob/eddba8194ffd3e63b416def06092ff9f4fa44552/README.sch.md)
+[中文简介](https://github.com/TiredBird404/enigma-plus/blob/main/README.sch.md)
 # Introduction
 **Enigma+**, is an encryption algorithm based on the Enigma machine used by Nazi Germany during World War II.
 This algorithm reproduces the character conversion and encryption methods of the Enigma machine,
