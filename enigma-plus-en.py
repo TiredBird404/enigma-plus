@@ -88,7 +88,7 @@ def unrest_alphabet(init_value : str) -> list[str]:
 def generate_rotors(deflect : list[int] , turn_extent : int, user_character_trans : str,):
     rotors : list[list[str]] = []
     for i, deflect_value in enumerate(deflect):
-        user_value_count : int = sum(deflect) + len(deflect) + deflect_value + turn_extent + i
+        user_value_count : int = sum(deflect) * len(deflect) + deflect_value + turn_extent + i
         init_value : str = user_character_trans + str(user_value_count)
         alphabet_unrest = unrest_alphabet(init_value)
         rotors.append(alphabet_unrest)
