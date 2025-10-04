@@ -55,9 +55,9 @@ def turn_deflect(deflect : list[int], turn_extent) -> list[int]:
     deflect_carry[0] += turn_extent
     # 给实际数组进位
     for i in range(len(deflect) - 1): 
-        add : int = int(deflect_carry[i] / len(ALPHABET)) # 进位
-        deflect[i + 1] += add
-        deflect_carry[i + 1] += add
+        carry : int = int(deflect_carry[i] / len(ALPHABET)) # 进位
+        deflect[i + 1] += carry
+        deflect_carry[i + 1] += carry
     return deflect
 
 def character_correspond(trans : list[str], letter : str) -> str:
