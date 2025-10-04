@@ -141,7 +141,7 @@ def get_user_input():
 
 def process_user_parameter(deflect : list[str], turn_extent : str):
     processed_turn_extent : int = int(turn_extent)
-    processed_deflect : list[int] = [(int(n) - 1) for n in deflect]
+    processed_deflect : list[int] = [int(n) for n in deflect]
     return processed_deflect, processed_turn_extent
 
 def can_str_to_int(value) -> bool:
