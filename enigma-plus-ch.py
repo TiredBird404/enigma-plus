@@ -204,7 +204,7 @@ def transduction_main():
     text_user.delete("1.0", "end")
     text_user.insert("1.0",transduction_text)
     processing(False)
-    messagebox.showinfo("完成","转码完成")
+    messagebox.showinfo("完成","转码完成。")
 
 def check_machine_parameter() -> bool:
     if len(ALPHABET) % 2 == 1:
