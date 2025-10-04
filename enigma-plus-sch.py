@@ -60,7 +60,7 @@ def turn_deflect(deflect : list[int], turn_extent) -> list[int]:
         deflect_carry[i + 1] += carry
     return deflect
 
-def character_correspond(trans : list[str], letter : str) -> str:
+def character_conversion(trans : list[str], letter : str) -> str:
     for trans_character in trans:
         if letter in trans_character:
             letter_index = trans_character.index(letter)
@@ -106,7 +106,7 @@ def transduction(deflect : list[int], turn_extent : int, user_character_trans : 
             ignore_character += 1
             continue
         # 用户交替
-        letter = character_correspond(user_character_trans, letter)
+        letter = character_conversion(user_character_trans, letter)
         rotors, machine_trans_parameter = generate_rotors_main(deflect, turn_extent, user_trans_integration)
         # 正向
         for n, rotor in enumerate(rotors):
@@ -116,7 +116,7 @@ def transduction(deflect : list[int], turn_extent : int, user_character_trans : 
             letter = ALPHABET[letter_index]
         # 机械交替
         machine_trans : list[str] = [machine_trans_parameter[l:l+2] for l in range(0, len(machine_trans_parameter), 2)]
-        letter = character_correspond(machine_trans, letter)
+        letter = character_conversion(machine_trans, letter)
         # 逆向
         for n in reversed(range(len(rotors))):
             index_alphabet = ALPHABET.index(letter)
@@ -125,7 +125,7 @@ def transduction(deflect : list[int], turn_extent : int, user_character_trans : 
             index_deflect = (rotor_letter_index - deflect[n]) % len(ALPHABET)
             letter = ALPHABET[index_deflect]
         # 用户交替
-        letter = character_correspond(user_character_trans, letter)
+        letter = character_conversion(user_character_trans, letter)
         deflect = turn_deflect(deflect, turn_extent)
         result += letter
     return result
