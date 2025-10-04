@@ -23,7 +23,7 @@ Enigma+'s computational logic is based on the Enigma machine, with following bas
   - ***ROTATION:*** Turn the initial offset value by the strength of rotation, then perform following carry operations.
 - ***RETURN*** the concatenation of characters processed in the loop.
 
-These algorithms ran the logic of the original Enigma machine, and added separate rotors for each character, making it more complex.
+These algorithms ran the logic of the original Enigma machine, and added separate rotors for each character, making it more complex. It also retained Enigma's algorithm of encryption and decryption working in parallel.
 
 ## Character Library Support Extension
 The program does not define character libraries using pre-set values , instead invoking them through calculations and loops.
