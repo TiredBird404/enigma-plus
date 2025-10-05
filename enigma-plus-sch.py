@@ -16,7 +16,7 @@ deflect_entry = ctk.CTkEntry(
     root,
     font=MONOSPACE_FONT,
     placeholder_text="初始偏移（示例：1,2,3,4）",
-    width=375,
+    width=370,
     height=40,
     border_width=2,
     corner_radius=10
@@ -25,7 +25,7 @@ turn_extent_entry = ctk.CTkEntry(
     root,
     font=MONOSPACE_FONT,
     placeholder_text="转动强度",
-    width=85,
+    width=90,
     height=40,
     border_width=2,
     corner_radius=10
@@ -222,7 +222,7 @@ transduction_button = ctk.CTkButton(
     command=transduction_main
 )
 deflect_entry.place(x = 25,y = 20)
-turn_extent_entry.place(x = 410,y = 20)
+turn_extent_entry.place(x = 405,y = 20)
 trans_entry.place(x=25,y=70)
 text_user.place(x=25,y=125)
 transduction_button.place(x=25,y=610)
