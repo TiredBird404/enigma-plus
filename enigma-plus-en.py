@@ -5,7 +5,8 @@ from tkinter import messagebox
 #----------Initial----------
 
 # Character library
-ALPHABET : list[str] = list("abcdefghijklmnopqrstuvwxyz") # Can be modified, but the length must be even.
+# Can be modified, but the length must be even.
+ALPHABET : list[str] = list("abcdefghijklmnopqrstuvwxyz") 
 
 root = ctk.CTk()
 root.title("Enigma+")
