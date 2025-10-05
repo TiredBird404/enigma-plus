@@ -9,7 +9,7 @@ from tkinter import messagebox
 ALPHABET : list[str] = list("abcdefghijklmnopqrstuvwxyz") 
 
 root = ctk.CTk()
-root.title("Enigma+")
+root.title(f"Enigma+ Character Library Length: {len(ALPHABET)}")
 root.geometry("520x690")
 root.resizable(0,0)
 ctk.set_appearance_mode("dark")
