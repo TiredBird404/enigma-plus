@@ -3,6 +3,10 @@ import hashlib
 from tkinter import messagebox
 
 #----------Initial----------
+
+# Character library
+ALPHABET : list[str] = list("abcdefghijklmnopqrstuvwxyz") # Can be modified, but the length must be even.
+
 root = ctk.CTk()
 root.title("Enigma+")
 root.geometry("520x690")
@@ -40,9 +44,6 @@ trans_entry = ctk.CTkEntry(
     corner_radius=10
 )
 text_user = ctk.CTkTextbox(root, font=MONOSPACE_FONT, width=470, height=470)
-
-# Character library
-ALPHABET : list[str] = list("abcdefghijklmnopqrstuvwxyz") # Can be modified, but the length must be even.
 
 #----------Computing----------
 def turn_deflect(deflect : list[int], turn_extent) -> list[int]:
