@@ -6,6 +6,13 @@ while introducing derivations in ***rotor generation***, ***unlimited parameter 
 
 ***Note: This program is a personal experimental project , cannot be compared to modern encryption algorithms.***
 
+## Run the Program
+*This program imports tkinter, customtkinter, and hashlib libraries and uses Python 3.13.7 as its development environment.  
+Ensure Python version 3.8 or higher is installed on your computer along with the customtkinter library to run this program:*
+```bash
+python3 -m pip install customtkinter
+```
+
 ## Algorithm Logic
 Enigma+'s computational logic is based on the Enigma machine, with following basically functioning logic:
 - ***LOOP:*** Sequentially get the nth character in the text and perform encryption.
