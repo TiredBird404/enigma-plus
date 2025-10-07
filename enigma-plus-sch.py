@@ -3,7 +3,8 @@ import hashlib
 from tkinter import messagebox
 
 # 词库
-ALPHABET : list[str] = list("abcdefghijklmnopqrstuvwxyz") # 可修改，但长度必须是偶数
+# 可修改，但长度必须是偶数
+ALPHABET : list[str] = list("abcdefghijklmnopqrstuvwxyz") 
 
 #----------进度----------
 def set_progress_bar(value : float):
