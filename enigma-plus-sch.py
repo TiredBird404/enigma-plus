@@ -238,7 +238,7 @@ trans_entry.place(x=25,y=75)
 text_user.place(x=25,y=130)
 transduction_button.place(x=25,y=635)
 progress_bar.place(x=25,y=610)
-check_machine_parameter()
 set_progress_bar(1)
+check_machine_parameter()
 
 root.mainloop()
