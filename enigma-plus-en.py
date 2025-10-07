@@ -186,7 +186,7 @@ def check_machine_parameter() -> bool:
 #----------Layout----------
 root = ctk.CTk()
 root.title(f"Enigma+ Character Library Length: {len(ALPHABET)}")
-root.geometry("520x720")
+root.geometry("520x715")
 root.resizable(0,0)
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
