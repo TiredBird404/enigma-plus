@@ -186,7 +186,7 @@ def check_machine_parameter() -> bool:
 #----------部件布置----------
 root = ctk.CTk()
 root.title(f"Enigma+ 字符库长度:{len(ALPHABET)}")
-root.geometry("520x720")
+root.geometry("520x715")
 root.resizable(0,0)
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
