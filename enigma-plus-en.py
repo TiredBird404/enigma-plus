@@ -2,49 +2,14 @@ import customtkinter as ctk
 import hashlib
 from tkinter import messagebox
 
-#----------Initial----------
-
 # Character library
 # Can be modified, but the length must be even.
-ALPHABET : list[str] = list("abcdefghijklmnopqrstuvwxyz") 
+ALPHABET : list[str] = list("abcdefghijklmnopqrstuvwxyz")
 
-root = ctk.CTk()
-root.title(f"Enigma+ Character Library Length: {len(ALPHABET)}")
-root.geometry("520x690")
-root.resizable(0,0)
-ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme("dark-blue")
-
-MONOSPACE_FONT = ("Monospace", 16)
-
-deflect_entry = ctk.CTkEntry(
-    root,
-    font=MONOSPACE_FONT,
-    placeholder_text="Initial offset values (ex: 1,2,3,4)",
-    width=312,
-    height=40,
-    border_width=2,
-    corner_radius=10
-)
-turn_extent_entry = ctk.CTkEntry(
-    root,
-    font=MONOSPACE_FONT,
-    placeholder_text="Rotation strength",
-    width=148,
-    height=40,
-    border_width=2,
-    corner_radius=10
-)
-trans_entry = ctk.CTkEntry(
-    root,
-    font=MONOSPACE_FONT,
-    placeholder_text="Character conversion (ex: ab,cd,ef)",
-    width=470,
-    height=40,
-    border_width=2,
-    corner_radius=10
-)
-text_user = ctk.CTkTextbox(root, font=MONOSPACE_FONT, width=470, height=470)
+#----------Progress----------
+def set_progress_bar(value : float):
+    progress_bar.set(value)
+    root.update()
 
 #----------Computing----------
 def turn_deflect(deflect : list[int], turn_extent) -> list[int]:
@@ -131,6 +96,7 @@ def transduction(deflect : list[int], turn_extent : int, user_character_trans : 
         letter = character_conversion(user_character_trans, letter)
         deflect = turn_deflect(deflect, turn_extent)
         result += letter
+        set_progress_bar(len(result)/len(text))
     return result
 
 #----------Parameter Processing----------
@@ -188,13 +154,16 @@ def processing(processing : bool):
         deflect_entry.configure(state = "disabled")
         turn_extent_entry.configure(state = "disabled")
         trans_entry.configure(state = "disabled")
+        transduction_button.configure(state = "disabled")
+        set_progress_bar(0)
     else:
         root.config(cursor="arrow")
         text_user.configure(cursor="xterm",state = "normal")
         deflect_entry.configure(state = "normal")
         turn_extent_entry.configure(state = "normal")
         trans_entry.configure(state = "normal")
-    root.update()
+        transduction_button.configure(state = "normal")
+        set_progress_bar(1)
 
 def transduction_main():
     deflect, turn_extent, user_character_trans, text = get_user_input()
@@ -215,6 +184,45 @@ def check_machine_parameter() -> bool:
         root.destroy()
 
 #----------Layout----------
+root = ctk.CTk()
+root.title(f"Enigma+ Character Library Length: {len(ALPHABET)}")
+root.geometry("520x720")
+root.resizable(0,0)
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("dark-blue")
+
+MONOSPACE_FONT = ("Monospace", 16)
+
+deflect_entry = ctk.CTkEntry(
+    root,
+    font=MONOSPACE_FONT,
+    placeholder_text="Initial offset values (ex: 1,2,3,4)",
+    width=312,
+    height=40,
+    border_width=2,
+    corner_radius=10
+)
+turn_extent_entry = ctk.CTkEntry(
+    root,
+    font=MONOSPACE_FONT,
+    placeholder_text="Rotation strength",
+    width=148,
+    height=40,
+    border_width=2,
+    corner_radius=10
+)
+trans_entry = ctk.CTkEntry(
+    root,
+    font=MONOSPACE_FONT,
+    placeholder_text="Character conversion (ex: ab,cd,ef)",
+    width=470,
+    height=40,
+    border_width=2,
+    corner_radius=10
+)
+text_user = ctk.CTkTextbox(root, font=MONOSPACE_FONT, width=470, height=470)
+progress_bar = ctk.CTkProgressBar(root, width=470, height=15, corner_radius=4)
+
 transduction_button = ctk.CTkButton(
     root,
     font=MONOSPACE_FONT,
@@ -227,8 +235,10 @@ transduction_button = ctk.CTkButton(
 deflect_entry.place(x = 25,y = 20)
 turn_extent_entry.place(x = 347,y = 20)
 trans_entry.place(x=25,y=70)
-text_user.place(x=25,y=125)
-transduction_button.place(x=25,y=610)
+text_user.place(x=25,y=130)
+transduction_button.place(x=25,y=635)
+progress_bar.place(x=25,y=610)
+processing(False)
 check_machine_parameter()
 
 root.mainloop()
