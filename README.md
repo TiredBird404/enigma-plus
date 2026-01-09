@@ -39,9 +39,6 @@ The only consideration is that, due to character conversion rules, the length of
 If incorrectly configured, the program will display error messages at startup.
 
 ## Generation of Rotors
-For each character in the text, a complete set of rotors is generated. Each rotor is a string produced by shuffling the character library.
-The shuffling of the character library is based on the ***Fisher-Yates shuffle algorithm***,
-and the permutation random values used in the shuffle algorithm are integer-converted **hash values** *(based on the SHA3-512 algorithm)*.
 Each hash value is computed based on processed user parameters, meaning user input significantly affects the final result.
 Even minor deviations can lead to vastly different outputs. The logic for generating a single rotor is outlined below:
 - ***SET*** Initial Value = Character Conversion Parameter Integration + Convert to String(Sum of Initial Offsets * Number of Rotor Sets + Current Offset Value + Rotation Intensity + Sequence of Currently Generated Rotors) -> String
