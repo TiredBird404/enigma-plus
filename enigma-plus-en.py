@@ -32,7 +32,10 @@ def character_conversion(trans : list[str], letter : str) -> str:
     for trans_character in trans:
         if letter in trans_character:
             letter_index = trans_character.index(letter)
-            letter = trans_character[(letter_index + 1) % 2] #0->1, 1->0
+            if letter_index == 0:
+                letter = trans_character[1]
+            else:
+                letter = trans_character[0]
     return letter
 
 def unrest_alphabet(init_value : str) -> list[str]:
@@ -65,6 +68,8 @@ def generate_rotors(deflect : list[int] , turn_extent : int, user_character_tran
 
 def transduction(deflect : list[int], turn_extent : int, user_character_trans : list[str], text : str) -> str:
     user_trans_integration : str = "".join(user_character_trans)
+    rotors, machine_trans_parameter = generate_rotors(deflect, turn_extent, user_trans_integration)
+    machine_trans : list[str] = [''.join(machine_trans_parameter[l:l+2]) for l in range(0, len(machine_trans_parameter), 2)]
     result : str = ""
     ignore_character : int = 0
     for letter in text:
@@ -75,7 +80,6 @@ def transduction(deflect : list[int], turn_extent : int, user_character_trans : 
             continue
         # User transduction
         letter = character_conversion(user_character_trans, letter)
-        rotors, machine_trans_parameter = generate_rotors(deflect, turn_extent, user_trans_integration)
         # Positive progression
         for n, rotor in enumerate(rotors):
             index_alphabet = ALPHABET.index(letter)
@@ -83,7 +87,6 @@ def transduction(deflect : list[int], turn_extent : int, user_character_trans : 
             letter_index = rotor.index(ALPHABET[index_deflect])
             letter = ALPHABET[letter_index]
         # Machine transduction
-        machine_trans : list[str] = [machine_trans_parameter[l:l+2] for l in range(0, len(machine_trans_parameter), 2)]
         letter = character_conversion(machine_trans, letter)
         # Reverse progression
         for n in reversed(range(len(rotors))):
@@ -178,7 +181,7 @@ def transduction_main():
     processing(False)
     messagebox.showinfo("Success","Computation complete")
 
-def check_machine_parameter() -> bool:
+def check_machine_parameter():
     if len(ALPHABET) % 2 == 1:
         messagebox.showerror("Configuration Error","Program character library length is odd.")
         root.destroy()
@@ -187,7 +190,7 @@ def check_machine_parameter() -> bool:
 root = ctk.CTk()
 root.title(f"Enigma+ Character Library Length: {len(ALPHABET)}")
 root.geometry("520x715")
-root.resizable(0,0)
+root.resizable(False,False)
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
